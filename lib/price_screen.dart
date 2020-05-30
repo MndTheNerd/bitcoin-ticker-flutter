@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/cupertino.dart';
 import 'coin_data.dart';
+
 
 class PriceScreen extends StatefulWidget {
   @override
@@ -25,6 +26,35 @@ class _PriceScreenState extends State<PriceScreen> {
     }
     return dropdownItems;
   }
+
+  List<Text> getPickerItems(){
+    List<Text> pickerItems =[];
+    for(String currency in currenciesList){
+      pickerItems.add(Text(currency,
+        style: TextStyle(color: Colors.white),
+      ),);
+    }
+    return pickerItems;
+  }
+
+
+//another way to create the picker widget
+  /*
+  Widget getPickerWidgetWithTheList(){
+    List<Widget> pickerItems = [];
+    for(String currency in currenciesList){
+      pickerItems.add(Text(currency, style: TextStyle(color: Colors.white),),);
+    }
+      return CupertinoPicker(backgroundColor: Colors.lightBlue,
+          itemExtent: 32.0,
+          onSelectedItemChanged: (selectedIndex){
+            print(currenciesList[selectedIndex]);
+          },
+          children: pickerItems);
+  }
+  */
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -62,18 +92,25 @@ class _PriceScreenState extends State<PriceScreen> {
             alignment: Alignment.center,
             padding: EdgeInsets.only(bottom: 30.0),
             color: Colors.lightBlue,
-            child: DropdownButton<String>(
-                value: selectedCurrency,
-                items: getDropdownItems(),
-                onChanged: (value) {
-                  setState(() {
-                    print(value);
-                    selectedCurrency = value;
-                  });
-                }),
+            child: CupertinoPicker(
+                backgroundColor: Colors.lightBlue,
+                itemExtent: 32.0,
+                onSelectedItemChanged: null,
+                children: getPickerItems()),
           ),
         ],
       ),
     );
   }
 }
+
+
+//DropdownButton<String>(
+//                value: selectedCurrency,
+//                items: getDropdownItems(),
+//                onChanged: (value) {
+//                  setState(() {
+//                    print(value);
+//                    selectedCurrency = value;
+//                  });
+//                }),
