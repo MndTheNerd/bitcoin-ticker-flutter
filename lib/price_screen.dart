@@ -49,21 +49,21 @@ class _PriceScreenState extends State<PriceScreen> {
       );
     }
 
-    CupertinoPicker(
+    return CupertinoPicker(
         backgroundColor: Colors.lightBlue,
         itemExtent: 32.0,
         onSelectedItemChanged: null,
         children: pickerItems);
   }
 
-//  Widget getPicker() {
-//    if (Platform.isIOS) {
-//      return IOSPicker();
-//    } else if (Platform.isAndroid) {
-//      return androidDropdown();
-//    }
-//    return IOSPicker();
-//  }
+  Widget getPicker() {
+    if (Platform.isIOS) {
+      return IOSPicker();
+    } else if (Platform.isAndroid) {
+      return androidDropdown();
+    }
+    return IOSPicker();
+  }
 
 //another way to create the picker widget
   /*
