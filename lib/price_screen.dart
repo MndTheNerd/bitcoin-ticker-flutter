@@ -56,14 +56,14 @@ class _PriceScreenState extends State<PriceScreen> {
         children: pickerItems);
   }
 
-  Widget getPicker() {
-    if (Platform.isIOS) {
-      return IOSPicker();
-    } else if (Platform.isAndroid) {
-      return androidDropdown();
-    }
-    return IOSPicker();
-  }
+//  Widget getPicker() {
+//    if (Platform.isIOS) {
+//      return IOSPicker();
+//    } else if (Platform.isAndroid) {
+//      return androidDropdown();
+//    }
+//    return IOSPicker();
+//  }
 
 //another way to create the picker widget
   /*
@@ -117,7 +117,7 @@ class _PriceScreenState extends State<PriceScreen> {
             alignment: Alignment.center,
             padding: EdgeInsets.only(bottom: 30.0),
             color: Colors.lightBlue,
-            child: getPicker(),
+            child: Platform.isIOS ? IOSPicker() : androidDropdown(),
           ),
         ],
       ),
